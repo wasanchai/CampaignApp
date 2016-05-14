@@ -1,0 +1,143 @@
+<ion-view title="แคมเปญ {{ campaign.data.name }}">
+  <ion-nav-buttons side="right">
+    <button ng-click="campaign.SaveCampaign(campaign.data)" class="button button-clear button-positive button-icon ion-ios-checkmark-empty">บันทึก</button>
+    <button  style="padding-left:20px" ng-click="campaign.RemoveCampaign(campaign.data)" class="button  button-clear button-positive button-icon  ion-ios-close-empty">ลบ</button>
+  </ion-nav-buttons>
+ <!--<ion-nav-buttons side="left">
+    <a href="#/tab/campaigns" class="button button-clear button-positive button-icon ion-ios-arrow-back">รายการแคมเปญ</a> 
+      </ion-nav-buttons>-->
+
+  <ion-content delegate-handle="chatScroll">
+    <div class="list">
+      <div class="row responsive-sm">
+        <div class="col">
+
+          <label class=" item-input  item-stacked-label">
+    <span class="input-label">ชื่อแคมเปญ</span>
+    <input type="text" placeholder="ชื่อแคมเปญ" ng-model="campaign.data.CampaignName">
+  </label>
+
+        </div>
+        <div class="col">
+
+          <label class=" item-input item-stacked-label">
+    <span class="input-label">รหัสแคมเปญ</span>
+    <input type="text" placeholder="รหัสแคมเปญ" ng-model="campaign.data.CampaignCode">
+  </label>
+
+        </div>
+      </div>
+      <div class="row responsive-sm">
+        <div class="col">
+
+          <label class=" item-input  item-stacked-label">
+    <span class="input-label">วันที่เริ่ม</span>
+    <input type="date" placeholder="DD/MM/YYY" ng-model="campaign.data.StartDate">
+  </label>
+
+        </div>
+        <div class="col">
+
+          <label class=" item-input item-stacked-label">
+    <span class="input-label">วันที่สิ้นสุด</span>
+    <input type="date" placeholder="DD/MM/YYY" ng-model="campaign.data.EndDate">
+  </label>
+
+        </div>
+      </div>
+      <div class="row  ">
+        <div class="col">
+
+          <label class=" item-input  item-stacked-label">
+    <span class="input-label">URL</span>
+    <input type="text"  ng-model="campaign.data.URL">
+  </label>
+        </div>
+      </div>
+    </div>
+
+
+    <div ng-repeat=" media in  campaign.data.Medias track by $index " class=" row responsive-sm" ng-if=" $index % 2 == 0">
+      <div class=" col-50" ng-repeat=" card in [campaign.data.Medias[$index], campaign.data.Medias[$index+1]]">
+
+        <div class="card" ng-if=" card == null">
+          <div class="item item-divider">
+            <button ng-click="campaign.NewMedia(campaign.data)" class="button button-clear button-positive button-icon ion-ios-compose-outline">เพิ่มช่องทาง</button>
+          </div>
+          
+        </div>
+
+        <div class="card" ng-if=" card != null">
+          <div class="item item-divider">
+ 
+            <div class="row  ">
+              <div class="col">
+                <button ng-click="campaign.SelectMedia(campaign,campaign.data,card,$index)"  style="font-weight:700" class="  button-positive button-icon ion-ios-arrow-down">{{card.MediaCode?card.MediaCode:"ระบุช่องทาง"}}</button>
+              </div>
+              <div class="col">
+
+                Budget
+
+              </div>
+              <div class="col">
+
+                Actual
+              </div>
+            </div>
+          </div>
+          <div class="item item-text-wrap">
+            <div class="row  ">
+              <div class="col"><span class=" ">Expense</span></div>
+              <div class="col"><input type="number" ng-model="card.BudgetExpense" class="SCNumber10"></div>
+              <div class="col"><input type="number" ng-model="card.ActualExpense" class="SCNumber10" ng-show="false"></div>
+            </div>
+            <div class="row  ">
+              <div class="col"><span class=" ">Web Visit</span></div>
+              <div class="col"><input type="number" ng-model="card.BudgetVisit" class="SCNumber10"></div>
+              <div class="col"><input type="number" ng-model="card.ActualVisit" class="SCNumber10" readonly></div>
+            </div>
+            <div class="row  ">
+              <div class="col">
+                <span class="">Web Goal</span>
+              </div>
+              <div class="col">
+
+                <input type="number" ng-model="card.BudgetGoal" class="SCNumber10" >
+
+              </div> 
+              <div class="col">
+
+                  <input type="number" ng-model="card.ActualGoal" class="SCNumber10" readonly>
+
+              </div>
+
+            </div>
+          </div>
+
+
+        </div>
+
+
+
+
+      </div>
+    </div>
+
+
+    <div ng-if=" campaign.data.Medias.length % 2 == 0 " class=" row responsive-sm">
+      <div class=" col-50">
+
+        <div class="card">
+          <div class="item item-divider">
+            <button ng-click="campaign.NewMedia(campaign.data)" class="button button-clear button-positive button-icon ion-ios-compose-outline">เพิ่มช่องทาง</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+  </ion-content>
+</ion-view>

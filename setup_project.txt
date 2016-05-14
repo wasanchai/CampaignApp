@@ -1,0 +1,14 @@
+meteor create whatsapp
+cd whatsapp
+rd /s /q server client
+meteor remove blaze-html-templates
+meteor add angular-templates
+meteor add dab0mb:ionic-assets
+meteor npm install ionic-scripts --save
+meteor npm install angular-meteor --save
+meteor add fourseven:scss
+ meteor npm install angular-moment
+ meteor add check
+ meteor remove autopublish
+ meteor add reywood:publish-composite
+ meteor npm install --save angular-chart.js

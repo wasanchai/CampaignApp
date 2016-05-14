@@ -1,0 +1,168 @@
+<ion-view title="แคมเปญ {{ campaign.data.name }}">
+  <ion-nav-buttons side="right">
+    <button ng-click="campaign.SaveCampaign(campaign.data)" class="button button-clear button-positive button-icon ion-ios-compose-outline">Save</button>
+  </ion-nav-buttons>
+
+  <ion-content>
+
+    <div class="row responsive-sm">
+      <div class="col">
+        <div>
+          <label class="item item-input item-floating-label">
+    <span class="input-label">ชื่อแคมเปญ</span>
+    <input type="text" placeholder="ชื่อแคมเปญ" ng-model="campaign.data.name">
+  </label>
+        </div>
+      </div>
+      <div class="col">
+        <div>
+          <label class="item item-input item-floating-label">
+    <span class="input-label">รหัสแคมเปญ</span>
+    <input type="text" placeholder="รหัสแคมเปญ" ng-model="campaign.data.campaigncode">
+  </label>
+        </div>
+      </div>
+    </div>
+
+
+
+ 
+      <div ng-repeat=" media in  campaign.data.medias track by $index " class=" row responsive-sm" ng-if=" $index % 2 == 0">
+        <div class=" col-50" ng-repeat=" i in [$index, $index + 1]" ng-if=" campaign.data.medias[i] != null" >
+
+
+          <div class="card" ng-init="card=campaign.data.medias[i]">
+            <div class="item item-divider">
+              <div class="row  ">
+                <div class="col">
+                  <span class="label" ng-click="campaign.SelectMedia(campaign.data,campaign.data.medias[i],$index)"> {{campaign.data.medias[i].mediacode}}</span>
+                  <!--<ion-checkbox ng-model="isChecked" ng-click="campaign.SelectMedia()">Checkbox Label</ion-checkbox>-->
+                  <!--<select ng-model="card.mediacode">
+      <option  value="facebook">Facebook</option>
+      <option  value="think" >ThinkOfLiving</option>
+      <option  value="twitter" >twitter</option>
+    </select> -->
+                </div>
+                <div class="col">
+
+                  Budget
+
+                </div>
+                <div class="col">
+
+                  Actual
+                </div>
+              </div>
+            </div>
+            <div class="item item-text-wrap">
+              <div class="row  ">
+                <div class="col"><span class="input-label"  >Expense</span></div>
+                <div class="col"><input type="number"   ng-model="card.BudgetExpense"  class="SCNumber10"></div>
+                <div class="col"><input type="number"  ng-model="card.ActualExpense" class="SCNumber10"></div>
+              </div>
+              <div class="row  ">
+                <div class="col"><span class="input-label"  >Visit</span></div>
+                <div class="col"><input type="number"   ng-model="card.BudgetVisit"  class="SCNumber10"></div>
+                <div class="col">xxx</div>
+              </div>              
+              <div class="row  ">
+                <div class="col">
+                 <span class="input-label"  >Goal</span> 
+                </div>
+                <div class="col">
+                  
+                    <input type="number"   ng-model="card.BudgetGoal"  class="SCNumber10">
+                   
+                </div>
+                <div class="col">
+                  
+                    322
+                   
+                </div>
+
+              </div>
+            </div>
+
+
+          </div>
+
+
+
+
+        </div>
+      </div>
+ 
+
+
+
+
+
+    <ion-list>
+      <ion-item ng-repeat="media in  campaign.data.medias " class="item-campaign item-remove-animate  " type="item-text-wrap">
+        {{media.mediacode}}
+      </ion-item>
+    </ion-list>
+
+    <ion-list>
+      <ion-item class="item-campaign item-remove-animate  " type="item-text-wrap">
+        <div class="row  ">
+          <div class="col">
+            สื่อ
+          </div>
+          <div class="col">
+            <div>
+              ต้นทุน
+            </div>
+          </div>
+          <div class="col">
+            <div>
+              เป้ายอดคลิ๊ก
+            </div>
+          </div>
+          <div class="col">
+            <div>
+              เป้ายอดคลิ๊ก
+            </div>
+          </div>
+          <div class="col">
+            <div>
+
+            </div>
+          </div>
+        </div>
+      </ion-item>
+      <ion-item ng-repeat="media in  campaign.data.medias " class="item-campaign item-remove-animate  " type="item-text-wrap">
+        <div class="row  ">
+          <div class="col">
+            {{media.mediacode}}
+            <!--<select ng-model="media.mediacode">
+      <option  value="facebook">Facebook</option>
+      <option  value="think" >ThinkOfLiving</option>
+     
+    </select>-->
+          </div>
+          <div class="col">
+            <div>
+              <input type="text" placeholder="ต้นทุน" ng-model="media.targetvisit" size="5">
+            </div>
+          </div>
+          <div class="col">
+            <div>
+              เป้ายอดคลิ๊ก
+            </div>
+          </div>
+          <div class="col">
+            <div>
+              เป้ายอดคลิ๊ก
+            </div>
+          </div>
+          <div class="col">
+            <div>{{$index}}
+              <button ng-click="campaign.RemoveMedia(campaign.data,$index)">Remove</button>
+            </div>
+          </div>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

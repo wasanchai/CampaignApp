@@ -1,0 +1,45 @@
+
+<ion-view title="Reports">
+ 
+    <ion-content>
+      <button ng-click="rep.testLogin()" class="button button-clear button-positive">Test</button>
+      <input type="checkbox" ng-model="rep.ck1">
+      
+        rep.ck1={{rep.ck1}}<Br>
+	  rep.data={{rep.data}}<Br>
+	  labels = {{rep.labels}}<Br>
+	  series = {{rep.series}} <Br>
+    data2 = {{rep.data2}}<Br>
+       sales = {{rep.sales}}<Br>
+   <div class="card">
+        <div class="item item-divider">
+            A line chart {{xx}}
+        </div>
+        <div class="item item-text-wrap">
+            <canvas id="line" class="chart chart-line" chart-data="rep.data" chart-labels="rep.labels"  chart-legend="true" chart-series="rep.series" chart-options="{showTooltips: false}"></canvas>
+        </div>
+    </div>
+ 
+	
+   
+<div class="list">
+  <label class="item item-input item-floating-label">
+    <span class="input-label">First Name</span>
+    <input type="text" placeholder="First Name">
+  </label>
+  <label class="item item-input item-floating-label">
+    <span class="input-label">date</span>
+    <input type="date" placeholder="Date">
+  </label>
+  <label class="item item-input item-floating-label">
+    <span class="input-label">Email</span>
+    <input type="text" placeholder="Email">
+  </label>
+</div>
+
+   <!-- 
+      <button class="button button-clear button-icon button-positive icon ion-ios-camera-outline"></button>
+      <i class="buttons-seperator icon ion-android-more-vertical"></i>
+      <button class="button button-clear button-icon button-positive icon ion-ios-mic-outline"></button> -->
+  </ion-content>
+</ion-view>
