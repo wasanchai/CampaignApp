@@ -12,3 +12,5 @@ meteor add fourseven:scss
  meteor remove autopublish
  meteor add reywood:publish-composite
  meteor npm install --save angular-chart.js
+ meteor npm install --save moment
+ meteor npm install --save angular-meteor-auth
